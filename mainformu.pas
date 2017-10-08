@@ -204,14 +204,44 @@ begin
     Chart1BarSeries1.AddXY(binMax[i],bins[i]);
 end;
 
+function CompareFileNames(List: TStringList; Index1, Index2: Integer): Integer;  // return -ve: 1<2, 0: 1=2, +ve: 1>2
+var
+  fileName1, Filename2 : string;
+  logPos1, logPos2 : integer;
+  dashPos1, dashPos2 : integer;
+  logId1, logId2 : integer;
+  i:integer;
+begin
+  fileName1 := extractFileName(List[Index1]);
+  filename2 := extractFileName(List[Index2]);
+  logPos1 := pos('Log',fileName1);
+  logPos2 := pos('Log',fileName2);
+  fileName1 := copy(fileName1,logPos1+3);
+  fileName2 := copy(fileName2,logPos1+3);
+  dashPos1 := pos('-',fileName1);
+  dashPos2 := pos('-',fileName2);
+  logId1 := strToInt(copy(fileName1,0,dashPos1-1));       // find and extract the log number
+  logId2 := strToInt(copy(fileName2,0,dashPos2-1));       // find and extract the log number
+  result := logId1-logId2;
+end;
+
 procedure TForm1.btnLoadClick(Sender: TObject);
 var
   i : integer;
+  slFiles : TStringList;
 begin
   if OpenDialog1.execute then begin
-    lbFiles.clear;
-    for i := 0 to OpenDialog1.Files.Count -1 do
-      lbFiles.Items.Add(OpenDialog1.Files.Strings[i]);
+    slFiles := TStringList.create;
+    try
+      for i := 0 to OpenDialog1.Files.Count -1 do
+        slFiles.Add(OpenDialog1.Files.Strings[i]);
+      slFiles.CustomSort(@CompareFileNames);
+      lbFiles.clear;
+      for i:= 0 to slFiles.Count-1 do
+        lbFiles.items.Add(slFiles[i]);
+    finally
+      slFiles.free;
+    end;
   end;
 end;
 
