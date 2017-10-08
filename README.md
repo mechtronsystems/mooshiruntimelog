@@ -4,6 +4,8 @@ Original code (c) Mechtron Systems 2017 and was created with Lazarus/fpc by mark
 
 This means you can compile on Linux, Windows or Mac - WOW!
 
+Original source code on github: https://github.com/mechtronsystems/mooshiruntimelog
+
 You may add to, or change this software as required but the original contents 
 of this file above this line must remain preserved and you must distribute this 
 notice with any software distributed in any form.   
@@ -21,6 +23,5 @@ Basic Operation:
 4. Process data
 5. Save state .csv file 
 
-Source code on github: https://github.com/mechtronsystems/mooshiruntimelog
 
 
