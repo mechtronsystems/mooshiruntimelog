@@ -65,6 +65,7 @@ type
     procedure btnLoadClick(Sender: TObject);
     procedure btnProcessClick(Sender: TObject);
     procedure btnRemoveClick(Sender: TObject);
+    procedure btnViewClick(Sender: TObject);
     procedure btnWriteCsvClick(Sender: TObject);
   private
     bins: array of integer;
@@ -87,7 +88,7 @@ implementation
 
 { TForm1 }
 uses
-  dateutils;
+  dateutils, memoFormu;
 
 procedure TForm1.btnClearClick(Sender: TObject);
 begin
@@ -331,7 +332,20 @@ end;
 
 procedure TForm1.btnRemoveClick(Sender: TObject);
 begin
-  // remove selected item
+  lbfiles.Items.Delete(lbFiles.ItemIndex);// remove selected item
+end;
+
+procedure TForm1.btnViewClick(Sender: TObject);
+begin
+  if lbFiles.ItemIndex > -1 then begin
+    memoForm := TmemoForm.Create(application);
+    try
+      memoForm.fileName:=lbfiles.Items[lbfiles.ItemIndex];
+      memoForm.showmodal;
+    finally
+      FreeAndNil(memoForm);
+    end;
+  end;
 end;
 
 procedure TForm1.btnWriteCsvClick(Sender: TObject);
