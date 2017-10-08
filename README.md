@@ -16,5 +16,6 @@ Basic Operation:
 4. Process data
 5. Save state .csv file 
 
-Source code is available somewhere on github
+Source code on github: https://github.com/mechtronsystems/mooshiruntimelog
+
 
