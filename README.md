@@ -1,6 +1,7 @@
 Mooshimeter Runtime Log Processor v1.0
 
 Original code (c) Mechtron Systems 2017 and was created with Lazarus/fpc by marko 
+This means you can compile on Linux, Windows or Mac - WOW!
 
 This program reads a number of Mooshimeter log files, 
 analyses the voltage data looking for major changes potentially indicating 
