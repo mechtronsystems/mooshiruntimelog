@@ -171,7 +171,7 @@ object Form1: TForm1
             ParentColor = False
           end
           object GroupBox1: TGroupBox
-            Left = 248
+            Left = 432
             Height = 97
             Top = 8
             Width = 152
@@ -222,31 +222,31 @@ object Form1: TForm1
             TabOrder = 5
           end
           object Label8: TLabel
-            Left = 536
+            Left = 376
             Height = 18
-            Top = 56
+            Top = 57
             Width = 25
             Caption = 'Clip:'
             ParentColor = False
           end
           object edtClip: TEdit
-            Left = 536
+            Left = 376
             Height = 30
-            Top = 74
+            Top = 75
             Width = 48
             TabOrder = 6
             Text = '0'
           end
           object GroupBox2: TGroupBox
-            Left = 408
+            Left = 248
             Height = 97
-            Top = 7
+            Top = 8
             Width = 121
             Caption = 'Bins'
             ClientHeight = 78
             ClientWidth = 119
             TabOrder = 7
-            object TrackBar1: TTrackBar
+            object tbNumBins: TTrackBar
               Left = 8
               Height = 42
               Top = 13

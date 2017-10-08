@@ -63,7 +63,7 @@ type
     Splitter5: TSplitter;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
-    TrackBar1: TTrackBar;
+    tbNumBins: TTrackBar;
     procedure btnCheckClick(Sender: TObject);
     procedure btnClearClick(Sender: TObject);
     procedure btnLoadClick(Sender: TObject);
@@ -100,8 +100,6 @@ begin
 end;
 
 procedure TForm1.btnCheckClick(Sender: TObject);
-const
-  NUM_BINS = 10;
 var
   i,j : integer;
   myFileName : string;
@@ -112,6 +110,7 @@ var
   logTime : TDateTime;
   CH1val, CH2val : single;
   clipVal : integer;
+  numBins : integer;
 begin
   goodLines := 0;
   badLines := 0;
@@ -174,34 +173,23 @@ begin
   end;
 
   // we have an array of TMeterRead's and are finished with the files
-  setlength(bins,NUM_BINS);  // setup to find the distributions of the readings, there should be 2 clusters
-  SetLength(binMax,NUM_BINS);
+  numBins := tbNumBins.Position;
+  setLength(bins,0);
+  setlength(bins,numBins);  // setup to find the distributions of the readings, there should be 2 clusters
+  setLength(binMax,0);
+  setLength(binMax,numBins);
   span := maxVal - minVal;  // find the incremental values for the bin maximums
-  spanInc := span / NUM_BINS;
-  for i := 0 to NUM_BINS -1 do      // load up the max values for the bins
+  spanInc := span / numBins;
+  for i := 0 to NumBins -1 do      // load up the max values for the bins
     binmax[i] := ((i+1) * spanInc) + minVal;
 
   for i := 0 to length(meterReads) -1 do begin
-    if meterReads[i].CH2 < binmax[0] then
-      inc(bins[0])
-    else if meterReads[i].CH2 < binmax[1] then
-      inc(bins[1])
-    else if meterReads[i].CH2 < binmax[2] then
-      inc(bins[2])
-    else if meterReads[i].CH2 < binmax[3] then
-      inc(bins[3])
-    else if meterReads[i].CH2 < binmax[4] then
-      inc(bins[4])
-    else if meterReads[i].CH2 < binmax[5] then
-      inc(bins[5])
-    else if meterReads[i].CH2 < binmax[6] then
-      inc(bins[6])
-    else if meterReads[i].CH2 < binmax[7] then
-      inc(bins[7])
-    else if meterReads[i].CH2 < binmax[8] then
-      inc(bins[8])
-    else if meterReads[i].CH2 < binmax[9] then
-      inc(bins[9]);
+    for j := 0 to numBins -1 do begin
+      if meterReads[i].CH2 < binmax[j] then begin
+        inc(bins[j]);
+        break;
+      end;
+    end;
   end;
 
   logLine(intToStr(bins[0])+', '+intToStr(bins[1])+', '+intToStr(bins[2])+', '+intToStr(bins[3])+', '+intToStr(bins[4])+', '+intToStr(bins[5])+', '+intToStr(bins[6])+', '+intToStr(bins[7])+', '+intToStr(bins[8])+', '+intToStr(bins[9]));
@@ -225,14 +213,13 @@ var
   logPos1, logPos2 : integer;
   dashPos1, dashPos2 : integer;
   logId1, logId2 : integer;
-  i:integer;
 begin
   fileName1 := extractFileName(List[Index1]);
   filename2 := extractFileName(List[Index2]);
   logPos1 := pos('Log',fileName1);
   logPos2 := pos('Log',fileName2);
   fileName1 := copy(fileName1,logPos1+3);
-  fileName2 := copy(fileName2,logPos1+3);
+  fileName2 := copy(fileName2,logPos2+3);
   dashPos1 := pos('-',fileName1);
   dashPos2 := pos('-',fileName2);
   logId1 := strToInt(copy(fileName1,0,dashPos1-1));       // find and extract the log number
