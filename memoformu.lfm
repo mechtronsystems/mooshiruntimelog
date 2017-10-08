@@ -6,7 +6,6 @@ object memoForm: TmemoForm
   Caption = 'memoForm'
   ClientHeight = 240
   ClientWidth = 320
-  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   LCLVersion = '1.8.0.4'
@@ -19,7 +18,6 @@ object memoForm: TmemoForm
     Lines.Strings = (
       'Memo1'
     )
-    OnChange = Memo1Change
     ReadOnly = True
     ScrollBars = ssAutoBoth
     TabOrder = 0

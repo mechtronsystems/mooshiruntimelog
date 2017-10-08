@@ -19,10 +19,8 @@ type
     Panel1: TPanel;
     procedure btnEditClick(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure Memo1Change(Sender: TObject);
   private
 
   public
@@ -40,10 +38,6 @@ implementation
 var
   firstShow : boolean = true;
 
-procedure TmemoForm.Memo1Change(Sender: TObject);
-begin
-
-end;
 
 procedure TmemoForm.FormCreate(Sender: TObject);
 begin
@@ -53,11 +47,6 @@ end;
 procedure TmemoForm.btnSaveClick(Sender: TObject);
 begin
   memo1.Lines.SaveToFile(fileName);
-end;
-
-procedure TmemoForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
-begin
-
 end;
 
 procedure TmemoForm.btnEditClick(Sender: TObject);

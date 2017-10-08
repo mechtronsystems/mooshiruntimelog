@@ -3,7 +3,7 @@
   <ProjectSession>
     <Version Value="10"/>
     <BuildModes Active="Default"/>
-    <Units Count="19">
+    <Units Count="20">
       <Unit0>
         <Filename Value="runtimelog.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -11,7 +11,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="83"/>
+        <UsageCount Value="85"/>
       </Unit0>
       <Unit1>
         <Filename Value="mainformu.pas"/>
@@ -19,10 +19,9 @@
         <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="155"/>
-        <CursorPos Y="103"/>
-        <UsageCount Value="83"/>
+        <TopLine Value="192"/>
+        <CursorPos X="3" Y="214"/>
+        <UsageCount Value="85"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -33,10 +32,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="memoFormu"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="23"/>
-        <CursorPos Y="70"/>
-        <UsageCount Value="24"/>
+        <EditorIndex Value="2"/>
+        <CursorPos Y="24"/>
+        <UsageCount Value="26"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit2>
@@ -150,127 +148,140 @@
         <CursorPos Y="1020"/>
         <UsageCount Value="10"/>
       </Unit18>
+      <Unit19>
+        <Filename Value="aboutformu.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="aboutForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="9" Y="38"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit19>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="119" TopLine="95"/>
+        <Caret Line="103" TopLine="155"/>
       </Position1>
       <Position2>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="135" Column="20" TopLine="95"/>
+        <Caret Line="104" TopLine="104"/>
       </Position2>
       <Position3>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="117" TopLine="95"/>
+        <Caret Line="103" TopLine="103"/>
       </Position3>
       <Position4>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="118" TopLine="95"/>
+        <Caret Line="102" TopLine="102"/>
       </Position4>
       <Position5>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="119" TopLine="95"/>
+        <Caret Line="101" TopLine="101"/>
       </Position5>
       <Position6>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="120" TopLine="95"/>
+        <Caret Line="100" TopLine="100"/>
       </Position6>
       <Position7>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="121" TopLine="95"/>
+        <Caret Line="99" TopLine="99"/>
       </Position7>
       <Position8>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="124" TopLine="95"/>
+        <Caret Line="104" TopLine="104"/>
       </Position8>
       <Position9>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="125" TopLine="98"/>
+        <Caret Line="103" TopLine="103"/>
       </Position9>
       <Position10>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="135" Column="5" TopLine="98"/>
+        <Caret Line="102" TopLine="102"/>
       </Position10>
       <Position11>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="117" TopLine="98"/>
+        <Caret Line="101" TopLine="101"/>
       </Position11>
       <Position12>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="118" TopLine="98"/>
+        <Caret Line="100" TopLine="100"/>
       </Position12>
       <Position13>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="119" TopLine="98"/>
+        <Caret Line="99" TopLine="99"/>
       </Position13>
       <Position14>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="120" TopLine="98"/>
+        <Caret Line="98" TopLine="98"/>
       </Position14>
       <Position15>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="121" TopLine="98"/>
+        <Caret Line="97" TopLine="97"/>
       </Position15>
       <Position16>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="128" TopLine="98"/>
+        <Caret Line="104" TopLine="104"/>
       </Position16>
       <Position17>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="157" Column="19" TopLine="109"/>
+        <Caret Line="103" TopLine="103"/>
       </Position17>
       <Position18>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="143" Column="11" TopLine="109"/>
+        <Caret Line="102" TopLine="102"/>
       </Position18>
       <Position19>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="128" TopLine="109"/>
+        <Caret Line="101" TopLine="101"/>
       </Position19>
       <Position20>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="148" Column="5" TopLine="109"/>
+        <Caret Line="100" TopLine="100"/>
       </Position20>
       <Position21>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="124" TopLine="109"/>
+        <Caret Line="99" TopLine="99"/>
       </Position21>
       <Position22>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="125" TopLine="109"/>
+        <Caret Line="98" TopLine="98"/>
       </Position22>
       <Position23>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="123" TopLine="109"/>
+        <Caret Line="97" TopLine="97"/>
       </Position23>
       <Position24>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="175" Column="2" TopLine="167"/>
+        <Caret Line="104" TopLine="104"/>
       </Position24>
       <Position25>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="257" Column="12" TopLine="235"/>
+        <Caret Line="103" TopLine="103"/>
       </Position25>
       <Position26>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="140" Column="59" TopLine="119"/>
+        <Caret Line="105" TopLine="105"/>
       </Position26>
       <Position27>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="267" Column="38" TopLine="236"/>
+        <Caret Line="214" Column="23" TopLine="212"/>
       </Position27>
       <Position28>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="192" TopLine="171"/>
+        <Caret Line="97" Column="35" TopLine="81"/>
       </Position28>
       <Position29>
-        <Filename Value="mainformu.pas"/>
-        <Caret Line="189" Column="21" TopLine="168"/>
+        <Filename Value="aboutformu.pas"/>
+        <Caret Line="38" Column="9"/>
       </Position29>
       <Position30>
-        <Filename Value="mainformu.pas"/>
-        <Caret Line="191" Column="11" TopLine="168"/>
+        <Filename Value="memoformu.pas"/>
+        <Caret Line="69" TopLine="26"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>

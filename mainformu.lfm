@@ -1,40 +1,41 @@
 object Form1: TForm1
-  Left = 324
+  Left = 344
   Height = 573
-  Top = 149
+  Top = 180
   Width = 1156
-  Caption = 'Form1'
+  Caption = 'Mooshimeter Runtime Log Processor'
   ClientHeight = 573
   ClientWidth = 1156
+  ShowHint = True
   LCLVersion = '1.8.0.4'
   object Panel1: TPanel
-    Left = 373
+    Left = 240
     Height = 573
     Top = 0
-    Width = 783
-    Align = alRight
+    Width = 916
+    Align = alClient
     Caption = 'Panel1'
     ClientHeight = 573
-    ClientWidth = 783
+    ClientWidth = 916
     TabOrder = 0
     object Panel3: TPanel
       Left = 1
       Height = 95
       Top = 477
-      Width = 781
+      Width = 914
       Align = alBottom
       Caption = 'Panel3'
       ClientHeight = 95
-      ClientWidth = 781
+      ClientWidth = 914
       TabOrder = 0
       object lbLogging: TListBox
         Left = 1
         Height = 93
         Top = 1
-        Width = 779
+        Width = 912
         Align = alClient
         ItemHeight = 0
-        ScrollWidth = 777
+        ScrollWidth = 910
         TabOrder = 0
         TopIndex = -1
       end
@@ -44,7 +45,7 @@ object Form1: TForm1
       Left = 1
       Height = 5
       Top = 472
-      Width = 781
+      Width = 914
       Align = alBottom
       ResizeAnchor = akBottom
     end
@@ -52,7 +53,7 @@ object Form1: TForm1
       Left = 1
       Height = 471
       Top = 1
-      Width = 781
+      Width = 914
       ActivePage = TabSheet1
       Align = alClient
       TabIndex = 0
@@ -60,18 +61,18 @@ object Form1: TForm1
       object TabSheet1: TTabSheet
         Caption = 'Analysis'
         ClientHeight = 441
-        ClientWidth = 771
+        ClientWidth = 904
         object Chart1: TChart
           Left = 0
           Height = 321
           Top = 120
-          Width = 771
+          Width = 904
           AxisList = <          
             item
               Minors = <>
               Title.LabelFont.Orientation = 900
               Title.Visible = True
-              Title.Caption = 'Frequency'
+              Title.Caption = 'Count'
             end          
             item
               Alignment = calBottom
@@ -97,14 +98,15 @@ object Form1: TForm1
           Left = 0
           Height = 115
           Top = 0
-          Width = 771
+          Width = 904
           Align = alTop
           ClientHeight = 115
-          ClientWidth = 771
+          ClientWidth = 904
           TabOrder = 1
           object edtCH2Min: TEdit
             Left = 10
             Height = 30
+            Hint = 'Minimum value found'
             Top = 74
             Width = 112
             TabOrder = 0
@@ -113,6 +115,7 @@ object Form1: TForm1
           object edtCh2Max: TEdit
             Left = 130
             Height = 30
+            Hint = 'Maximum value found'
             Top = 74
             Width = 110
             TabOrder = 1
@@ -190,6 +193,7 @@ object Form1: TForm1
             object edtOffBelow: TEdit
               Left = 88
               Height = 30
+              Hint = 'Define maximum value for OFF state'
               Top = 8
               Width = 48
               TabOrder = 0
@@ -206,6 +210,7 @@ object Form1: TForm1
             object edtOnAbove: TEdit
               Left = 90
               Height = 30
+              Hint = 'Define minimum value for ON state'
               Top = 40
               Width = 46
               TabOrder = 1
@@ -215,7 +220,8 @@ object Form1: TForm1
           object btnProcess: TButton
             Left = 592
             Height = 97
-            Top = 7
+            Hint = 'Process the data'
+            Top = 8
             Width = 84
             Caption = 'Process ->'
             OnClick = btnProcessClick
@@ -232,6 +238,7 @@ object Form1: TForm1
           object edtClip: TEdit
             Left = 376
             Height = 30
+            Hint = 'Limit the maximum count'
             Top = 75
             Width = 48
             TabOrder = 6
@@ -249,6 +256,7 @@ object Form1: TForm1
             object tbNumBins: TTrackBar
               Left = 8
               Height = 42
+              Hint = 'Number of bins'
               Top = 13
               Width = 100
               Max = 100
@@ -263,7 +271,7 @@ object Form1: TForm1
           Left = 0
           Height = 5
           Top = 115
-          Width = 771
+          Width = 904
           Align = alTop
           ResizeAnchor = akTop
         end
@@ -271,28 +279,29 @@ object Form1: TForm1
       object TabSheet2: TTabSheet
         Caption = 'Output'
         ClientHeight = 441
-        ClientWidth = 771
+        ClientWidth = 904
         object Panel5: TPanel
           Left = 0
           Height = 53
           Top = 388
-          Width = 771
+          Width = 904
           Align = alBottom
           ClientHeight = 53
-          ClientWidth = 771
+          ClientWidth = 904
           TabOrder = 0
           object Splitter4: TSplitter
             Cursor = crVSplit
             Left = 1
             Height = 5
             Top = 47
-            Width = 769
+            Width = 902
             Align = alBottom
             ResizeAnchor = akBottom
           end
           object btnWriteCsv: TButton
             Left = 24
             Height = 25
+            Hint = 'Write the states to .csv file'
             Top = 13
             Width = 96
             Caption = 'Write to .csv'
@@ -304,7 +313,7 @@ object Form1: TForm1
           Left = 0
           Height = 132
           Top = 256
-          Width = 771
+          Width = 904
           AxisList = <          
             item
               Minors = <>
@@ -333,7 +342,7 @@ object Form1: TForm1
           Left = 0
           Height = 5
           Top = 251
-          Width = 771
+          Width = 904
           Align = alTop
           ResizeAnchor = akTop
         end
@@ -341,10 +350,10 @@ object Form1: TForm1
           Left = 0
           Height = 251
           Top = 0
-          Width = 771
+          Width = 904
           Align = alTop
           ItemHeight = 0
-          ScrollWidth = 769
+          ScrollWidth = 902
           TabOrder = 3
           TopIndex = -1
         end
@@ -352,85 +361,98 @@ object Form1: TForm1
     end
   end
   object Splitter1: TSplitter
-    Left = 368
+    Left = 235
     Height = 573
     Top = 0
     Width = 5
-    Align = alRight
-    ResizeAnchor = akRight
   end
   object Panel2: TPanel
     Left = 0
     Height = 573
     Top = 0
-    Width = 368
-    Align = alClient
+    Width = 235
+    Align = alLeft
     Caption = 'Panel2'
     ClientHeight = 573
-    ClientWidth = 368
+    ClientWidth = 235
     TabOrder = 2
-    object btnClear: TButton
-      Left = 16
-      Height = 25
-      Top = 535
-      Width = 337
-      Anchors = [akLeft, akRight, akBottom]
-      Caption = 'Clear'
-      OnClick = btnClearClick
-      TabOrder = 0
-    end
     object btnLoad: TButton
-      Left = 16
+      Left = 0
       Height = 25
-      Top = 8
-      Width = 75
+      Hint = 'Load Files'
+      Top = 1
+      Width = 56
       Caption = 'Load'
       OnClick = btnLoadClick
+      TabOrder = 0
+    end
+    object btnRemove: TButton
+      Left = 56
+      Height = 25
+      Hint = 'Remove a file from the list'
+      Top = 1
+      Width = 56
+      Caption = 'Remove'
+      OnClick = btnRemoveClick
       TabOrder = 1
     end
-    object btnCheck: TButton
-      Left = 280
-      Height = 25
-      Top = 8
-      Width = 75
-      Caption = 'Check'
-      OnClick = btnCheckClick
-      TabOrder = 2
-    end
     object btnView: TButton
-      Left = 192
+      Left = 112
       Height = 25
-      Top = 8
-      Width = 75
+      Hint = 'View and edit files'
+      Top = 1
+      Width = 56
       Caption = 'View'
       OnClick = btnViewClick
+      TabOrder = 2
+    end
+    object btnAnalyse: TButton
+      Left = 168
+      Height = 25
+      Hint = 'Analyse files'
+      Top = 1
+      Width = 56
+      Caption = 'Analyse'
+      OnClick = btnAnalyseClick
       TabOrder = 3
     end
-    object lbFiles: TListBox
-      Left = 16
-      Height = 479
-      Top = 49
-      Width = 340
-      ItemHeight = 0
-      ScrollWidth = 338
+    object btnClear: TButton
+      Left = 0
+      Height = 25
+      Hint = 'Clear the file list'
+      Top = 544
+      Width = 56
+      Caption = 'Clear'
+      OnClick = btnClearClick
       TabOrder = 4
+    end
+    object btnAbout: TButton
+      Left = 176
+      Height = 25
+      Hint = 'About this program'
+      Top = 544
+      Width = 53
+      Caption = 'About'
+      OnClick = btnAboutClick
+      TabOrder = 5
+    end
+    object lbFiles: TListBox
+      Left = -3
+      Height = 511
+      Top = 32
+      Width = 232
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      ItemHeight = 0
+      ScrollWidth = 230
+      TabOrder = 6
       TopIndex = -1
     end
-  end
-  object btnRemove: TButton
-    Left = 104
-    Height = 25
-    Top = 8
-    Width = 75
-    Caption = 'Remove'
-    OnClick = btnRemoveClick
-    TabOrder = 3
   end
   object OpenDialog1: TOpenDialog
     DefaultExt = '.csv'
     Filter = 'csv files (*.csv)|*.csv|all files (*.*)|*.*'
     Options = [ofAllowMultiSelect, ofEnableSizing, ofViewDetail]
     left = 152
-    top = 16
+    top = 104
   end
 end

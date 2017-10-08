@@ -19,12 +19,13 @@ type
   { TForm1 }
 
   TForm1 = class(TForm)
+    btnAbout: TButton;
+    btnAnalyse: TButton;
     btnClear: TButton;
     btnLoad: TButton;
-    btnCheck: TButton;
+    btnProcess: TButton;
     btnRemove: TButton;
     btnView: TButton;
-    btnProcess: TButton;
     btnWriteCsv: TButton;
     Chart1: TChart;
     Chart1BarSeries1: TBarSeries;
@@ -46,9 +47,9 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label8: TLabel;
+    lbFiles: TListBox;
     lbLogging: TListBox;
     lbOutput: TListBox;
-    lbFiles: TListBox;
     OpenDialog1: TOpenDialog;
     PageControl1: TPageControl;
     Panel1: TPanel;
@@ -64,7 +65,8 @@ type
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     tbNumBins: TTrackBar;
-    procedure btnCheckClick(Sender: TObject);
+    procedure btnAboutClick(Sender: TObject);
+    procedure btnAnalyseClick(Sender: TObject);
     procedure btnClearClick(Sender: TObject);
     procedure btnLoadClick(Sender: TObject);
     procedure btnProcessClick(Sender: TObject);
@@ -92,14 +94,14 @@ implementation
 
 { TForm1 }
 uses
-  dateutils, memoFormu;
+  dateutils, memoFormu, aboutformu;
 
 procedure TForm1.btnClearClick(Sender: TObject);
 begin
   lbFiles.Clear;
 end;
 
-procedure TForm1.btnCheckClick(Sender: TObject);
+procedure TForm1.btnAnalyseClick(Sender: TObject);
 var
   i,j : integer;
   myFileName : string;
@@ -205,6 +207,11 @@ begin
       Chart1BarSeries1.AddXY(binMax[i],clipVal)
     else
       Chart1BarSeries1.AddXY(binMax[i],bins[i]);
+end;
+
+procedure TForm1.btnAboutClick(Sender: TObject);
+begin
+  aboutform.showmodal;
 end;
 
 function CompareFileNames(List: TStringList; Index1, Index2: Integer): Integer;  // return -ve: 1<2, 0: 1=2, +ve: 1>2
