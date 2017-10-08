@@ -230,7 +230,7 @@ object Form1: TForm1
           object Label8: TLabel
             Left = 376
             Height = 18
-            Top = 57
+            Top = 8
             Width = 25
             Caption = 'Clip:'
             ParentColor = False
@@ -239,7 +239,7 @@ object Form1: TForm1
             Left = 376
             Height = 30
             Hint = 'Limit the maximum count'
-            Top = 75
+            Top = 26
             Width = 48
             TabOrder = 6
             Text = '0'
