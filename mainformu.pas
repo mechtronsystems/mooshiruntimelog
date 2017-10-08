@@ -36,13 +36,16 @@ type
     edtCh2Max: TEdit;
     edtCH2Min: TEdit;
     edtOnAbove: TEdit;
+    edtClip: TEdit;
     GroupBox1: TGroupBox;
+    GroupBox2: TGroupBox;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
+    Label8: TLabel;
     lbLogging: TListBox;
     lbOutput: TListBox;
     lbFiles: TListBox;
@@ -60,6 +63,7 @@ type
     Splitter5: TSplitter;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
+    TrackBar1: TTrackBar;
     procedure btnCheckClick(Sender: TObject);
     procedure btnClearClick(Sender: TObject);
     procedure btnLoadClick(Sender: TObject);
@@ -107,6 +111,7 @@ var
   goodLines, badLines, totLines : integer;
   logTime : TDateTime;
   CH1val, CH2val : single;
+  clipVal : integer;
 begin
   goodLines := 0;
   badLines := 0;
@@ -115,11 +120,10 @@ begin
   minVal := maxint;
   PageControl1.ActivePageIndex:=0;
 
-  if meterReads <> nil then begin
-    for i := 0 to length(meterReads) -1 do   // clean up the meter read objects
-      meterReads[i].free;
-    FreeAndNil(meterReads);
+  for i := 0 to length(meterReads) -1 do begin  // clean up the meter read objects
+    meterReads[i].free;
   end;
+  setlength(meterReads,0);
 
   myFile := TStringList.Create;
   try
@@ -199,10 +203,20 @@ begin
     else if meterReads[i].CH2 < binmax[9] then
       inc(bins[9]);
   end;
+
   logLine(intToStr(bins[0])+', '+intToStr(bins[1])+', '+intToStr(bins[2])+', '+intToStr(bins[3])+', '+intToStr(bins[4])+', '+intToStr(bins[5])+', '+intToStr(bins[6])+', '+intToStr(bins[7])+', '+intToStr(bins[8])+', '+intToStr(bins[9]));
   Chart1BarSeries1.Clear;
-  for i := 0 to length(bins)-1 do           // populate the chart
-    Chart1BarSeries1.AddXY(binMax[i],bins[i]);
+  try
+    clipVal := strToInt(edtClip.text);
+  except
+    clipVal := 0;
+    showMessage('Clip value must be an integer');
+  end;
+  for i := 0 to length(bins)-1 do
+    if (clipVal > 0) and (bins[i]>clipVal) then // populate the chart
+      Chart1BarSeries1.AddXY(binMax[i],clipVal)
+    else
+      Chart1BarSeries1.AddXY(binMax[i],bins[i]);
 end;
 
 function CompareFileNames(List: TStringList; Index1, Index2: Integer): Integer;  // return -ve: 1<2, 0: 1=2, +ve: 1>2

@@ -8,33 +8,33 @@ object Form1: TForm1
   ClientWidth = 1156
   LCLVersion = '1.8.0.4'
   object Panel1: TPanel
-    Left = 528
+    Left = 373
     Height = 573
     Top = 0
-    Width = 628
+    Width = 783
     Align = alRight
     Caption = 'Panel1'
     ClientHeight = 573
-    ClientWidth = 628
+    ClientWidth = 783
     TabOrder = 0
     object Panel3: TPanel
       Left = 1
       Height = 95
       Top = 477
-      Width = 626
+      Width = 781
       Align = alBottom
       Caption = 'Panel3'
       ClientHeight = 95
-      ClientWidth = 626
+      ClientWidth = 781
       TabOrder = 0
       object lbLogging: TListBox
         Left = 1
         Height = 93
         Top = 1
-        Width = 624
+        Width = 779
         Align = alClient
         ItemHeight = 0
-        ScrollWidth = 622
+        ScrollWidth = 777
         TabOrder = 0
         TopIndex = -1
       end
@@ -44,7 +44,7 @@ object Form1: TForm1
       Left = 1
       Height = 5
       Top = 472
-      Width = 626
+      Width = 781
       Align = alBottom
       ResizeAnchor = akBottom
     end
@@ -52,7 +52,7 @@ object Form1: TForm1
       Left = 1
       Height = 471
       Top = 1
-      Width = 626
+      Width = 781
       ActivePage = TabSheet1
       Align = alClient
       TabIndex = 0
@@ -60,12 +60,12 @@ object Form1: TForm1
       object TabSheet1: TTabSheet
         Caption = 'Analysis'
         ClientHeight = 441
-        ClientWidth = 616
+        ClientWidth = 771
         object Chart1: TChart
           Left = 0
           Height = 321
           Top = 120
-          Width = 616
+          Width = 771
           AxisList = <          
             item
               Minors = <>
@@ -97,83 +97,87 @@ object Form1: TForm1
           Left = 0
           Height = 115
           Top = 0
-          Width = 616
+          Width = 771
           Align = alTop
           ClientHeight = 115
-          ClientWidth = 616
+          ClientWidth = 771
           TabOrder = 1
           object edtCH2Min: TEdit
-            Left = 24
+            Left = 10
             Height = 30
-            Top = 87
+            Top = 74
             Width = 112
             TabOrder = 0
             Text = 'edtCH2Min'
           end
           object edtCh2Max: TEdit
-            Left = 154
+            Left = 130
             Height = 30
-            Top = 88
+            Top = 74
             Width = 110
             TabOrder = 1
             Text = 'edtCh2Max'
           end
           object Label3: TLabel
-            Left = 24
+            Left = 10
             Height = 18
-            Top = 64
+            Top = 56
             Width = 54
             Caption = 'CH2: Min'
             ParentColor = False
           end
           object Label4: TLabel
-            Left = 154
+            Left = 132
             Height = 18
-            Top = 64
+            Top = 56
             Width = 57
             Caption = 'CH2: Max'
             ParentColor = False
           end
           object edtCH1min: TEdit
-            Left = 22
+            Left = 8
             Height = 30
-            Top = 31
+            Top = 24
             Width = 114
+            Enabled = False
             TabOrder = 2
             Text = 'edtCH1min'
           end
           object edtCH1Max: TEdit
-            Left = 152
+            Left = 128
             Height = 30
-            Top = 31
+            Top = 24
             Width = 112
+            Enabled = False
             TabOrder = 3
             Text = 'edtCH1Max'
           end
           object Label1: TLabel
-            Left = 24
+            Left = 10
             Height = 18
             Top = 8
             Width = 54
             Caption = 'CH1: Min'
+            Enabled = False
             ParentColor = False
           end
           object Label2: TLabel
-            Left = 152
+            Left = 130
             Height = 18
             Top = 8
             Width = 57
             Caption = 'CH1: Max'
+            Enabled = False
             ParentColor = False
           end
           object GroupBox1: TGroupBox
-            Left = 296
-            Height = 105
+            Left = 248
+            Height = 97
             Top = 8
-            Width = 192
+            Width = 152
             Caption = 'Cutoffs'
-            ClientHeight = 86
-            ClientWidth = 190
+            ClientHeight = 78
+            ClientWidth = 150
             TabOrder = 4
             object Label5: TLabel
               Left = 14
@@ -187,7 +191,7 @@ object Form1: TForm1
               Left = 88
               Height = 30
               Top = 8
-              Width = 80
+              Width = 48
               TabOrder = 0
               Text = '0'
             end
@@ -203,19 +207,55 @@ object Form1: TForm1
               Left = 90
               Height = 30
               Top = 40
-              Width = 80
+              Width = 46
               TabOrder = 1
               Text = '1'
             end
           end
           object btnProcess: TButton
-            Left = 500
-            Height = 25
-            Top = 47
+            Left = 592
+            Height = 97
+            Top = 7
             Width = 84
             Caption = 'Process ->'
             OnClick = btnProcessClick
             TabOrder = 5
+          end
+          object Label8: TLabel
+            Left = 536
+            Height = 18
+            Top = 56
+            Width = 25
+            Caption = 'Clip:'
+            ParentColor = False
+          end
+          object edtClip: TEdit
+            Left = 536
+            Height = 30
+            Top = 74
+            Width = 48
+            TabOrder = 6
+            Text = '0'
+          end
+          object GroupBox2: TGroupBox
+            Left = 408
+            Height = 97
+            Top = 7
+            Width = 121
+            Caption = 'Bins'
+            ClientHeight = 78
+            ClientWidth = 119
+            TabOrder = 7
+            object TrackBar1: TTrackBar
+              Left = 8
+              Height = 42
+              Top = 13
+              Width = 100
+              Max = 100
+              Min = 5
+              Position = 10
+              TabOrder = 0
+            end
           end
         end
         object Splitter3: TSplitter
@@ -223,7 +263,7 @@ object Form1: TForm1
           Left = 0
           Height = 5
           Top = 115
-          Width = 616
+          Width = 771
           Align = alTop
           ResizeAnchor = akTop
         end
@@ -231,22 +271,22 @@ object Form1: TForm1
       object TabSheet2: TTabSheet
         Caption = 'Output'
         ClientHeight = 441
-        ClientWidth = 616
+        ClientWidth = 771
         object Panel5: TPanel
           Left = 0
           Height = 53
           Top = 388
-          Width = 616
+          Width = 771
           Align = alBottom
           ClientHeight = 53
-          ClientWidth = 616
+          ClientWidth = 771
           TabOrder = 0
           object Splitter4: TSplitter
             Cursor = crVSplit
             Left = 1
             Height = 5
             Top = 47
-            Width = 614
+            Width = 769
             Align = alBottom
             ResizeAnchor = akBottom
           end
@@ -264,7 +304,7 @@ object Form1: TForm1
           Left = 0
           Height = 132
           Top = 256
-          Width = 616
+          Width = 771
           AxisList = <          
             item
               Minors = <>
@@ -293,7 +333,7 @@ object Form1: TForm1
           Left = 0
           Height = 5
           Top = 251
-          Width = 616
+          Width = 771
           Align = alTop
           ResizeAnchor = akTop
         end
@@ -301,10 +341,10 @@ object Form1: TForm1
           Left = 0
           Height = 251
           Top = 0
-          Width = 616
+          Width = 771
           Align = alTop
           ItemHeight = 0
-          ScrollWidth = 614
+          ScrollWidth = 769
           TabOrder = 3
           TopIndex = -1
         end
@@ -312,7 +352,7 @@ object Form1: TForm1
     end
   end
   object Splitter1: TSplitter
-    Left = 523
+    Left = 368
     Height = 573
     Top = 0
     Width = 5
@@ -323,17 +363,17 @@ object Form1: TForm1
     Left = 0
     Height = 573
     Top = 0
-    Width = 523
+    Width = 368
     Align = alClient
     Caption = 'Panel2'
     ClientHeight = 573
-    ClientWidth = 523
+    ClientWidth = 368
     TabOrder = 2
     object btnClear: TButton
       Left = 16
       Height = 25
       Top = 535
-      Width = 491
+      Width = 337
       Anchors = [akLeft, akRight, akBottom]
       Caption = 'Clear'
       OnClick = btnClearClick
@@ -370,9 +410,9 @@ object Form1: TForm1
       Left = 16
       Height = 479
       Top = 49
-      Width = 489
+      Width = 340
       ItemHeight = 0
-      ScrollWidth = 487
+      ScrollWidth = 338
       TabOrder = 4
       TopIndex = -1
     end

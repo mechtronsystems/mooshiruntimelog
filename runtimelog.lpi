@@ -45,6 +45,7 @@
         <Filename Value="memoformu.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="memoForm"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="memoFormu"/>
       </Unit2>
