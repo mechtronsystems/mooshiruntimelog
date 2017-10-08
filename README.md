@@ -8,7 +8,7 @@ Original source code on github: https://github.com/mechtronsystems/mooshiruntime
 
 You may add to, or change this software as required but the original contents 
 of this file above this line must remain preserved and you must distribute this 
-notice with any software distributed in any form.   
+notice with any software distributed in any form.  This software is licensed under MPL ver 2.0
 
 This program reads a number of Mooshimeter log files and analyses the voltage 
 data looking for major changes potentially indicating change of state such as on and off.
