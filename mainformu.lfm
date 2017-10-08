@@ -329,18 +329,6 @@ object Form1: TForm1
     ClientHeight = 573
     ClientWidth = 523
     TabOrder = 2
-    object memoFiles: TMemo
-      Left = 8
-      Height = 474
-      Top = 48
-      Width = 499
-      Anchors = [akTop, akLeft, akRight, akBottom]
-      Lines.Strings = (
-        'memoFiles'
-      )
-      ScrollBars = ssAutoBoth
-      TabOrder = 0
-    end
     object btnClear: TButton
       Left = 16
       Height = 25
@@ -349,34 +337,54 @@ object Form1: TForm1
       Anchors = [akLeft, akRight, akBottom]
       Caption = 'Clear'
       OnClick = btnClearClick
-      TabOrder = 1
+      TabOrder = 0
     end
     object btnLoad: TButton
-      Left = 8
+      Left = 16
       Height = 25
-      Top = 16
+      Top = 8
       Width = 75
       Caption = 'Load'
       OnClick = btnLoadClick
-      TabOrder = 2
+      TabOrder = 1
     end
     object btnCheck: TButton
-      Left = 111
+      Left = 192
       Height = 25
-      Top = 16
+      Top = 8
       Width = 75
       Caption = 'Check'
       OnClick = btnCheckClick
-      TabOrder = 3
+      TabOrder = 2
     end
     object btnView: TButton
-      Left = 216
+      Left = 280
       Height = 25
-      Top = 16
+      Top = 8
       Width = 75
       Caption = 'View'
-      TabOrder = 4
+      TabOrder = 3
     end
+    object lbFiles: TListBox
+      Left = 16
+      Height = 479
+      Top = 49
+      Width = 489
+      ItemHeight = 0
+      ScrollWidth = 487
+      Sorted = True
+      TabOrder = 4
+      TopIndex = -1
+    end
+  end
+  object btnRemove: TButton
+    Left = 104
+    Height = 25
+    Top = 8
+    Width = 75
+    Caption = 'Remove'
+    OnClick = btnRemoveClick
+    TabOrder = 3
   end
   object OpenDialog1: TOpenDialog
     DefaultExt = '.csv'

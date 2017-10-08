@@ -22,6 +22,7 @@ type
     btnClear: TButton;
     btnLoad: TButton;
     btnCheck: TButton;
+    btnRemove: TButton;
     btnView: TButton;
     btnProcess: TButton;
     btnWriteCsv: TButton;
@@ -44,7 +45,7 @@ type
     Label6: TLabel;
     lbLogging: TListBox;
     lbOutput: TListBox;
-    memoFiles: TMemo;
+    lbFiles: TListBox;
     OpenDialog1: TOpenDialog;
     PageControl1: TPageControl;
     Panel1: TPanel;
@@ -63,6 +64,7 @@ type
     procedure btnClearClick(Sender: TObject);
     procedure btnLoadClick(Sender: TObject);
     procedure btnProcessClick(Sender: TObject);
+    procedure btnRemoveClick(Sender: TObject);
     procedure btnWriteCsvClick(Sender: TObject);
   private
     bins: array of integer;
@@ -89,7 +91,7 @@ uses
 
 procedure TForm1.btnClearClick(Sender: TObject);
 begin
-  memoFiles.Clear;
+  lbFiles.Clear;
 end;
 
 procedure TForm1.btnCheckClick(Sender: TObject);
@@ -99,7 +101,7 @@ var
   i,j : integer;
   myFileName : string;
   lineTime,lineValA,lineValB : string;
-  myFile : TStringList;
+  myFile : TStringList = nil;
   maxVal, minVal, span, spanInc : single;
   goodLines, badLines, totLines : integer;
   logTime : TDateTime;
@@ -118,11 +120,12 @@ begin
     FreeAndNil(meterReads);
   end;
 
-  for i := 0 to memoFiles.Lines.Count -1 do begin  // all the files in the list
-    myFileName := memoFiles.Lines[i];
-    logLine('Using: ' + myFileName);
-    myFile := TStringList.Create;
-    try
+  myFile := TStringList.Create;
+  try
+    for i := 0 to lbFiles.Items.Count -1 do begin  // all the files in the list
+      myFile.Clear;
+      myFileName := lbFiles.Items[i];
+      logLine('Using: ' + myFileName);
       myFile.LoadFromFile(myFileName);
       totLines := myFile.Count;
       logLine('File lines = ' + IntToStr(totLines));
@@ -131,9 +134,14 @@ begin
           inc(goodLines);
           extractData(myFile[j],lineTime,lineValA,lineValB);
           if trim(lineTime) <> trim('UTC TIME SEC') then begin          { DONE : need to do comparison with no spaces }
-            logTime := UnixToDateTime(trunc(StrToFloat(lineTime)));
-            ch1val := StrToFloat(lineValA);
-            ch2val := StrToFloat(lineValB);
+            try
+              logTime := UnixToDateTime(trunc(StrToFloat(lineTime)));
+              ch1val := StrToFloat(lineValA);
+              ch2val := StrToFloat(lineValB);
+            except
+              showMessage('Error in file '+myFileName+' at line '+intToStr(j+1));
+              raise
+            end;
             logLine(lineTime+' '+lineValA+' '+lineValB);
             logLine(datetimetostr(logTime)+' '+floattostr(CH1val)+' '+floattostr(CH2val));
             if CH2val > maxVal then                                      { TODO : fix for ch1 or ch2 }
@@ -155,9 +163,9 @@ begin
       logLine('Min: ' + FloatToStr(minVal) + 'Max ' + FloatToStr(maxVal));
       edtCH2Min.Text:=FloatToStr(minVal);
       edtCH2Max.Text:=FloatToStr(maxVal);
-    finally
-      myFile.Free;
     end;
+  finally
+    myFile.Free;
   end;
 
   // we have an array of TMeterRead's and are finished with the files
@@ -201,9 +209,9 @@ var
   i : integer;
 begin
   if OpenDialog1.execute then begin
-    memoFiles.clear;
+    lbFiles.clear;
     for i := 0 to OpenDialog1.Files.Count -1 do
-      memoFiles.Lines.Add(OpenDialog1.Files.Strings[i])
+      lbFiles.Items.Add(OpenDialog1.Files.Strings[i]);
   end;
 end;
 
@@ -289,6 +297,11 @@ begin
          // we are in an undefined state, so ignore the reading
     end;
   end;
+end;
+
+procedure TForm1.btnRemoveClick(Sender: TObject);
+begin
+  // remove selected item
 end;
 
 procedure TForm1.btnWriteCsvClick(Sender: TObject);
