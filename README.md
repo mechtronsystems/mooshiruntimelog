@@ -1,14 +1,15 @@
 Mooshimeter Runtime Log Processor v1.0
 
-Original code (c) Mechtron Systems 2017 and was created with Lazarus/fpc by marko 
+Original code (c) Mechtron Systems 2017 and was created with Lazarus/fpc by marko.
+
 This means you can compile on Linux, Windows or Mac - WOW!
+
 You may add to, or change this software as required but the original contents 
-of this file above this line must remain preserved and you must publish this i
+of this file above this line must remain preserved and you must publish this 
 notice with any software distributed in any form.   
 
-This program reads a number of Mooshimeter log files, 
-analyses the voltage data looking for major changes potentially indicating 
-change of state such as on and off.
+This program reads a number of Mooshimeter log files and analyses the voltage 
+data looking for major changes potentially indicating change of state such as on and off.
 
 A typical application example would be using a current transformer on a 
 power cable to determine electric motor run times.
