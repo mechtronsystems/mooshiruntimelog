@@ -1,6 +1,6 @@
 Mooshimeter Runtime Log Processor v2.0
 
-Original code (c) Mechtron Systems 2017-2023 and was created with Lazarus/fpc by marko.
+Original code (c) Mechtron Systems 2017-2024 and was created with Lazarus/fpc by marko.
 
 This means you can compile on Linux, Windows or Mac - WOW!
 
