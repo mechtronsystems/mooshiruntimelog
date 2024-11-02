@@ -40,10 +40,10 @@ type
     edtClip: TEdit;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
+    lblCH1Min: TLabel;
+    lblCh1Max: TLabel;
+    lblCH2Min: TLabel;
+    lblCH2Max: TLabel;
     Label5: TLabel;
     Label6: TLabel;
     Label8: TLabel;
@@ -57,6 +57,7 @@ type
     Panel3: TPanel;
     Panel4: TPanel;
     Panel5: TPanel;
+    rgChannel: TRadioGroup;
     Splitter1: TSplitter;
     Splitter2: TSplitter;
     Splitter3: TSplitter;
@@ -73,12 +74,14 @@ type
     procedure btnRemoveClick(Sender: TObject);
     procedure btnViewClick(Sender: TObject);
     procedure btnWriteCsvClick(Sender: TObject);
+    procedure rgChannelClick(Sender: TObject);
   private
     bins: array of integer;
     binMax: array of single;
     meterReads: array of TMeterRead;
     function hasCommas(line : string) : boolean;
     procedure extractData(const line : string; var col1,col2,col3 : string);
+    procedure LoadArrayFromFile(var maxVal1, minVal1, maxVal2, minVal2 : single);
     procedure logLine(logString : string);
     function calcState(const value, lowLimit, highLimit : single; var currentState:boolean):boolean;
   public
@@ -101,24 +104,24 @@ begin
   lbFiles.Clear;
 end;
 
-procedure TForm1.btnAnalyseClick(Sender: TObject);
+procedure TForm1.LoadArrayFromFile(var maxVal1, minVal1, maxVal2, minVal2 : single);
 var
   i,j : integer;
   myFileName : string;
   lineTime,lineValA,lineValB : string;
   myFile : TStringList = nil;
-  maxVal, minVal, span, spanInc : single;
+
   goodLines, badLines, totLines : integer;
   logTime : TDateTime;
   CH1val, CH2val : single;
-  clipVal : integer;
-  numBins : integer;
 begin
   goodLines := 0;
   badLines := 0;
   totLines := 0;
-  maxVal := 0;
-  minVal := maxint;
+  maxVal1 := 0;
+  minVal1 := maxint;
+  maxVal2 := 0;
+  minVal2 := maxint;
   PageControl1.ActivePageIndex:=0;
 
   for i := 0 to length(meterReads) -1 do begin  // clean up the meter read objects
@@ -126,6 +129,7 @@ begin
   end;
   setlength(meterReads,0);
 
+  // Create an array of TMeterRead's
   myFile := TStringList.Create;
   try
     for i := 0 to lbFiles.Items.Count -1 do begin  // all the files in the list
@@ -150,15 +154,19 @@ begin
             end;
             logLine(lineTime+' '+lineValA+' '+lineValB);
             logLine(datetimetostr(logTime)+' '+floattostr(CH1val)+' '+floattostr(CH2val));
-            if CH2val > maxVal then                                      { TODO : fix for ch1 or ch2 }
-              maxVal := CH2val;
-            if CH2Val < minVal then
-              minVal := CH2val;
-          setlength(meterReads,length(meterReads)+1);  // make the array one bigger
-          meterReads[length(meterReads)-1] := TMeterRead.create;
-          meterReads[length(meterReads)-1].TS := logTime;
-          meterReads[length(meterReads)-1].CH1 := CH1val;
-          meterReads[length(meterReads)-1].CH2 := CH2val;
+            if CH1val > maxVal1 then
+              maxVal1 := CH1val;
+            if CH1Val < minVal1 then
+              minVal1 := CH1val;
+            if CH2val > maxVal2 then
+              maxVal2 := CH2val;
+            if CH2Val < minVal2 then
+              minVal2 := CH2val;
+            setlength(meterReads,length(meterReads)+1);  // make the array one bigger
+            meterReads[length(meterReads)-1] := TMeterRead.create;
+            meterReads[length(meterReads)-1].TS := logTime;
+            meterReads[length(meterReads)-1].CH1 := CH1val;
+            meterReads[length(meterReads)-1].CH2 := CH2val;
           end;
         end
         else begin
@@ -166,28 +174,58 @@ begin
         end;
       end;
       logLine(intTostr(goodlines) + ' good and ' + IntToStr(badLines) + ' bad lines');
-      logLine('Min: ' + FloatToStr(minVal) + 'Max ' + FloatToStr(maxVal));
-      edtCH2Min.Text:=FloatToStr(minVal);
-      edtCH2Max.Text:=FloatToStr(maxVal);
+      logLine('Ch1Min: ' + FloatToStr(minVal1) + 'Ch1Max ' + FloatToStr(maxVal1));
+      logLine('Ch2Min: ' + FloatToStr(minVal2) + 'Ch2Max ' + FloatToStr(maxVal2));
+      edtCH1Min.Text:=FloatToStr(minVal1);
+      edtCH1Max.Text:=FloatToStr(maxVal1);
+      edtCH2Min.Text:=FloatToStr(minVal2);
+      edtCH2Max.Text:=FloatToStr(maxVal2);
     end;
   finally
     myFile.Free;
   end;
+end;
 
+procedure TForm1.btnAnalyseClick(Sender: TObject);
+var
+  i,j : integer;
+  maxVal1, minVal1, maxVal2, minVal2, span, spanInc : single;
+  clipVal : integer;
+  numBins : integer;
+  UsingCh2 : boolean;
+  meterRead: Single;
+begin
+  maxVal1 := 0;
+  minVal1 := maxint;
+  maxVal2 := 0;
+  minVal2 := maxint;
+  PageControl1.ActivePageIndex:=0;
+  UsingCh2:=rgChannel.ItemIndex=1;
+
+  LoadArrayFromFile(maxVal1, minVal1, maxVal2, minVal2);
   // we have an array of TMeterRead's and are finished with the files
   numBins := tbNumBins.Position;
   setLength(bins,0);
   setlength(bins,numBins);  // setup to find the distributions of the readings, there should be 2 clusters
   setLength(binMax,0);
   setLength(binMax,numBins);
-  span := maxVal - minVal;  // find the incremental values for the bin maximums
+
+  if not UsingCh2 then
+    span := maxVal1 - minVal1  // ch1 find the incremental values for the bin maximums
+  else
+    span := maxVal2 - minVal2;  // ch2 find the incremental values for the bin maximums
   spanInc := span / numBins;
-  for i := 0 to NumBins -1 do      // load up the max values for the bins
-    binmax[i] := ((i+1) * spanInc) + minVal;
+  for i := 0 to NumBins -1 do begin      // load up the max values for the bins
+    binmax[i] := ((i+1) * spanInc) + minVal1;
+  end;
 
   for i := 0 to length(meterReads) -1 do begin
+    if not UsingCh2 then
+      meterRead:=meterReads[i].CH1
+    else
+      meterRead:=meterReads[i].CH2;
     for j := 0 to numBins -1 do begin
-      if meterReads[i].CH2 < binmax[j] then begin
+      if meterRead < binmax[j] then begin
         inc(bins[j]);
         break;
       end;
@@ -318,7 +356,10 @@ begin
   Chart2LineSeries1.AddXY(duration,BoolToInt(currentState));
 
   for i := 1 to length(meterReads)-1 do begin     // loop through the rest
-    currentVal := meterReads[i].CH2;
+    if rgChannel.ItemIndex=0 then
+      currentVal := meterReads[i].CH1
+    else
+      currentVal := meterReads[i].CH2;
     currentTime := meterReads[i].TS;
     If calcState(currentVal,offBelow,onAbove,currentState) then begin               { TODO : fix time stamp for map - either times or minutes in a duration field }
       // we have a defined state
@@ -362,6 +403,30 @@ var
 begin
   fileName := 'mooshistate'+dateTimeToStr(Now)+'.csv';
   lbOutput.Items.SaveToFile(fileName);
+end;
+
+procedure TForm1.rgChannelClick(Sender: TObject);
+begin
+  if (Sender as TRadioGroup).ItemIndex = 0 then begin
+    edtCH1Max.Enabled:= true;
+    edtCH1min.Enabled:= true;
+    lblCH1Min.Enabled:= true;
+    lblCh1Max.Enabled:= true;
+    edtCH2Max.Enabled:= false;
+    edtCH2min.Enabled:= false;
+    lblCH2Min.Enabled:= false;
+    lblCh2Max.Enabled:= false;
+  end
+  else begin
+    edtCH1Max.Enabled:= false;
+    edtCH1min.Enabled:= false;
+    lblCH1Min.Enabled:= false;
+    lblCh1Max.Enabled:= false;
+    edtCH2Max.Enabled:= true;
+    edtCH2min.Enabled:= true;
+    lblCH2Min.Enabled:= true;
+    lblCh2Max.Enabled:= true;
+  end;
 end;
 
 function TForm1.calcState(const value, lowLimit, highLimit: single; var currentState:boolean): boolean;

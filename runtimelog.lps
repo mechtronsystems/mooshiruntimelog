@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectSession>
-    <Version Value="10"/>
+    <Version Value="12"/>
     <BuildModes Active="Default"/>
-    <Units Count="20">
+    <Units Count="21">
       <Unit0>
         <Filename Value="runtimelog.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -11,7 +11,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="85"/>
+        <UsageCount Value="91"/>
       </Unit0>
       <Unit1>
         <Filename Value="mainformu.pas"/>
@@ -19,9 +19,10 @@
         <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="192"/>
-        <CursorPos X="3" Y="214"/>
-        <UsageCount Value="85"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="344"/>
+        <CursorPos X="7" Y="373"/>
+        <UsageCount Value="91"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -34,7 +35,7 @@
         <UnitName Value="memoFormu"/>
         <EditorIndex Value="2"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="26"/>
+        <UsageCount Value="32"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit2>
@@ -44,18 +45,17 @@
         <ComponentName Value="aboutForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <CursorPos X="93" Y="36"/>
-        <UsageCount Value="21"/>
+        <TopLine Value="7"/>
+        <CursorPos Y="36"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="/usr/share/fpcsrc/3.0.4/packages/rtl-objpas/src/inc/dateutil.pp"/>
         <UnitName Value="dateutils"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
       </Unit4>
       <Unit5>
         <Filename Value="/usr/share/lazarus/1.8.0RC4/lcl/lclmessageglue.pas"/>
@@ -63,31 +63,31 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="90"/>
         <CursorPos Y="114"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
       </Unit5>
       <Unit6>
         <Filename Value="/usr/share/fpcsrc/3.0.4/packages/rtl-objpas/src/inc/dateutils.pp"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="11"/>
       </Unit6>
       <Unit7>
         <Filename Value="/usr/share/fpcsrc/3.0.4/packages/rtl-objpas/src/inc/dateutil.inc"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="18"/>
+        <UsageCount Value="17"/>
       </Unit7>
       <Unit8>
         <Filename Value="/usr/share/fpcsrc/3.0.4/rtl/objpas/sysutils/sysutilh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="298"/>
         <CursorPos X="13" Y="320"/>
-        <UsageCount Value="6"/>
+        <UsageCount Value="5"/>
       </Unit8>
       <Unit9>
         <Filename Value="/usr/share/fpcsrc/3.0.4/rtl/objpas/sysutils/sysutils.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="154"/>
         <CursorPos X="9" Y="158"/>
-        <UsageCount Value="6"/>
+        <UsageCount Value="5"/>
       </Unit9>
       <Unit10>
         <Filename Value="/usr/share/lazarus/1.8.0RC4/lcl/lclrescache.pas"/>
@@ -95,7 +95,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="235"/>
         <CursorPos Y="248"/>
-        <UsageCount Value="6"/>
+        <UsageCount Value="5"/>
       </Unit10>
       <Unit11>
         <Filename Value="/usr/share/lazarus/1.8.0RC4/components/lazutils/maps.pp"/>
@@ -103,48 +103,48 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="826"/>
         <CursorPos Y="848"/>
-        <UsageCount Value="6"/>
+        <UsageCount Value="5"/>
       </Unit11>
       <Unit12>
         <Filename Value="/usr/share/lazarus/1.8.0RC4/lcl/include/control.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2828"/>
         <CursorPos Y="2853"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit12>
       <Unit13>
         <Filename Value="/usr/share/lazarus/1.8.0RC4/lcl/include/buttoncontrol.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="22"/>
-        <UsageCount Value="6"/>
+        <UsageCount Value="5"/>
       </Unit13>
       <Unit14>
         <Filename Value="/usr/share/lazarus/1.8.0RC4/lcl/include/buttons.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="148"/>
         <CursorPos Y="170"/>
-        <UsageCount Value="6"/>
+        <UsageCount Value="5"/>
       </Unit14>
       <Unit15>
         <Filename Value="/usr/share/fpcsrc/3.0.4/rtl/objpas/sysutils/sysstrh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="41"/>
         <CursorPos X="5" Y="62"/>
-        <UsageCount Value="7"/>
+        <UsageCount Value="6"/>
       </Unit15>
       <Unit16>
         <Filename Value="/usr/share/fpcsrc/3.0.4/rtl/objpas/sysutils/sysstr.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1868"/>
         <CursorPos X="2" Y="1872"/>
-        <UsageCount Value="7"/>
+        <UsageCount Value="6"/>
       </Unit16>
       <Unit17>
         <Filename Value="/usr/share/fpcsrc/3.0.4/rtl/objpas/classes/classesh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="755"/>
         <CursorPos X="15" Y="775"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="11"/>
       </Unit17>
       <Unit18>
         <Filename Value="/usr/share/lazarus/1.8.0RC4/lcl/lclproc.pas"/>
@@ -152,146 +152,162 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="894"/>
         <CursorPos Y="916"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit18>
       <Unit19>
         <Filename Value="/usr/share/lazarus/1.8.0RC4/lcl/include/customform.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="998"/>
         <CursorPos Y="1020"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit19>
+      <Unit20>
+        <Filename Value="/usr/share/lazarus/1.8.0RC5/lcl/stdctrls.pp"/>
+        <UnitName Value="StdCtrls"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="631"/>
+        <CursorPos X="3" Y="645"/>
+        <UsageCount Value="9"/>
+      </Unit20>
     </Units>
-    <JumpHistory Count="29" HistoryIndex="28">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="104" TopLine="104"/>
+        <Caret Line="99" TopLine="99"/>
       </Position1>
       <Position2>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="103" TopLine="103"/>
+        <Caret Line="98" TopLine="98"/>
       </Position2>
       <Position3>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="102" TopLine="102"/>
+        <Caret Line="97" TopLine="97"/>
       </Position3>
       <Position4>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="101" TopLine="101"/>
+        <Caret Line="104" TopLine="104"/>
       </Position4>
       <Position5>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="100" TopLine="100"/>
+        <Caret Line="103" TopLine="103"/>
       </Position5>
       <Position6>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="99" TopLine="99"/>
+        <Caret Line="105" TopLine="105"/>
       </Position6>
       <Position7>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="104" TopLine="104"/>
+        <Caret Line="214" Column="23" TopLine="212"/>
       </Position7>
       <Position8>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="103" TopLine="103"/>
+        <Caret Line="97" Column="35" TopLine="81"/>
       </Position8>
       <Position9>
-        <Filename Value="mainformu.pas"/>
-        <Caret Line="102" TopLine="102"/>
+        <Filename Value="aboutformu.pas"/>
+        <Caret Line="38" Column="9"/>
       </Position9>
       <Position10>
-        <Filename Value="mainformu.pas"/>
-        <Caret Line="101" TopLine="101"/>
+        <Filename Value="memoformu.pas"/>
+        <Caret Line="69" TopLine="26"/>
       </Position10>
       <Position11>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="100" TopLine="100"/>
+        <Caret Line="49" Column="16" TopLine="36"/>
       </Position11>
       <Position12>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="99" TopLine="99"/>
+        <Caret Line="74" Column="19" TopLine="54"/>
       </Position12>
       <Position13>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="98" TopLine="98"/>
+        <Caret Line="375" Column="50" TopLine="346"/>
       </Position13>
       <Position14>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="97" TopLine="97"/>
+        <Caret Line="242" Column="3" TopLine="225"/>
       </Position14>
       <Position15>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="104" TopLine="104"/>
+        <Caret Line="191" Column="34" TopLine="167"/>
       </Position15>
       <Position16>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="103" TopLine="103"/>
+        <Caret Line="193" Column="34" TopLine="169"/>
       </Position16>
       <Position17>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="102" TopLine="102"/>
+        <Caret Line="186" Column="41" TopLine="163"/>
       </Position17>
       <Position18>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="101" TopLine="101"/>
+        <Caret Line="188" Column="17" TopLine="147"/>
       </Position18>
       <Position19>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="100" TopLine="100"/>
+        <Caret Line="195" TopLine="161"/>
       </Position19>
       <Position20>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="99" TopLine="99"/>
+        <Caret Line="107" Column="38" TopLine="86"/>
       </Position20>
       <Position21>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="98" TopLine="98"/>
+        <Caret Line="203" Column="21" TopLine="178"/>
       </Position21>
       <Position22>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="97" TopLine="97"/>
+        <Caret Line="83" Column="21" TopLine="61"/>
       </Position22>
       <Position23>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="104" TopLine="104"/>
+        <Caret Line="443" Column="3" TopLine="421"/>
       </Position23>
       <Position24>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="103" TopLine="103"/>
+        <Caret Line="248" Column="18" TopLine="211"/>
       </Position24>
       <Position25>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="105" TopLine="105"/>
+        <Caret Line="203" Column="34" TopLine="182"/>
       </Position25>
       <Position26>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="214" Column="23" TopLine="212"/>
+        <Caret Line="214" Column="30" TopLine="201"/>
       </Position26>
       <Position27>
         <Filename Value="mainformu.pas"/>
-        <Caret Line="97" Column="35" TopLine="81"/>
+        <Caret Line="215" Column="30" TopLine="202"/>
       </Position27>
       <Position28>
-        <Filename Value="aboutformu.pas"/>
-        <Caret Line="38" Column="9"/>
+        <Filename Value="mainformu.pas"/>
+        <Caret Line="214" Column="30" TopLine="201"/>
       </Position28>
       <Position29>
-        <Filename Value="memoformu.pas"/>
-        <Caret Line="69" TopLine="26"/>
+        <Filename Value="mainformu.pas"/>
+        <Caret Line="213" Column="30" TopLine="200"/>
       </Position29>
+      <Position30>
+        <Filename Value="mainformu.pas"/>
+        <Caret Line="214" Column="30" TopLine="201"/>
+      </Position30>
     </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode="default"/>
+    </RunParams>
   </ProjectSession>
   <Debugging>
-    <Watches Count="3">
-      <Item1>
+    <Watches>
+      <Item>
         <Expression Value="j"/>
-      </Item1>
-      <Item2>
+      </Item>
+      <Item>
         <Expression Value="lineValA"/>
-      </Item2>
-      <Item3>
+      </Item>
+      <Item>
         <Expression Value="lineValB"/>
-      </Item3>
+      </Item>
     </Watches>
   </Debugging>
 </CONFIG>

@@ -7,7 +7,7 @@ object Form1: TForm1
   ClientHeight = 573
   ClientWidth = 1156
   ShowHint = True
-  LCLVersion = '1.8.0.4'
+  LCLVersion = '3.4.0.0'
   object Panel1: TPanel
     Left = 240
     Height = 573
@@ -60,25 +60,29 @@ object Form1: TForm1
       TabOrder = 2
       object TabSheet1: TTabSheet
         Caption = 'Analysis'
-        ClientHeight = 441
+        ClientHeight = 440
         ClientWidth = 904
         object Chart1: TChart
           Left = 0
-          Height = 321
+          Height = 320
           Top = 120
           Width = 904
           AxisList = <          
             item
+              Marks.LabelBrush.Style = bsClear
               Minors = <>
               Title.LabelFont.Orientation = 900
               Title.Visible = True
               Title.Caption = 'Count'
+              Title.LabelBrush.Style = bsClear
             end          
             item
               Alignment = calBottom
+              Marks.LabelBrush.Style = bsClear
               Minors = <>
               Title.Visible = True
               Title.Caption = 'Value'
+              Title.LabelBrush.Style = bsClear
             end>
           Foot.Brush.Color = clBtnFace
           Foot.Font.Color = clBlue
@@ -104,95 +108,95 @@ object Form1: TForm1
           ClientWidth = 904
           TabOrder = 1
           object edtCH2Min: TEdit
-            Left = 10
-            Height = 30
+            Left = 178
+            Height = 31
             Hint = 'Minimum value found'
             Top = 74
             Width = 112
+            Enabled = False
             TabOrder = 0
             Text = 'edtCH2Min'
           end
           object edtCh2Max: TEdit
-            Left = 130
-            Height = 30
+            Left = 298
+            Height = 31
             Hint = 'Maximum value found'
             Top = 74
             Width = 110
+            Enabled = False
             TabOrder = 1
             Text = 'edtCh2Max'
           end
-          object Label3: TLabel
-            Left = 10
-            Height = 18
+          object lblCH2Min: TLabel
+            Left = 178
+            Height = 19
             Top = 56
-            Width = 54
+            Width = 56
             Caption = 'CH2: Min'
+            Enabled = False
             ParentColor = False
           end
-          object Label4: TLabel
-            Left = 132
-            Height = 18
+          object lblCH2Max: TLabel
+            Left = 300
+            Height = 19
             Top = 56
-            Width = 57
+            Width = 59
             Caption = 'CH2: Max'
+            Enabled = False
             ParentColor = False
           end
           object edtCH1min: TEdit
-            Left = 8
-            Height = 30
+            Left = 176
+            Height = 31
             Top = 24
             Width = 114
-            Enabled = False
             TabOrder = 2
             Text = 'edtCH1min'
           end
           object edtCH1Max: TEdit
-            Left = 128
-            Height = 30
+            Left = 296
+            Height = 31
             Top = 24
             Width = 112
-            Enabled = False
             TabOrder = 3
             Text = 'edtCH1Max'
           end
-          object Label1: TLabel
-            Left = 10
-            Height = 18
+          object lblCH1Min: TLabel
+            Left = 178
+            Height = 19
             Top = 8
-            Width = 54
+            Width = 56
             Caption = 'CH1: Min'
-            Enabled = False
             ParentColor = False
           end
-          object Label2: TLabel
-            Left = 130
-            Height = 18
+          object lblCh1Max: TLabel
+            Left = 298
+            Height = 19
             Top = 8
-            Width = 57
+            Width = 59
             Caption = 'CH1: Max'
-            Enabled = False
             ParentColor = False
           end
           object GroupBox1: TGroupBox
-            Left = 432
+            Left = 600
             Height = 97
             Top = 8
             Width = 152
             Caption = 'Cutoffs'
-            ClientHeight = 78
+            ClientHeight = 77
             ClientWidth = 150
             TabOrder = 4
             object Label5: TLabel
               Left = 14
-              Height = 18
+              Height = 19
               Top = 12
-              Width = 60
+              Width = 64
               Caption = 'Off Below:'
               ParentColor = False
             end
             object edtOffBelow: TEdit
               Left = 88
-              Height = 30
+              Height = 31
               Hint = 'Define maximum value for OFF state'
               Top = 8
               Width = 48
@@ -201,15 +205,15 @@ object Form1: TForm1
             end
             object Label6: TLabel
               Left = 16
-              Height = 18
+              Height = 19
               Top = 44
-              Width = 62
+              Width = 65
               Caption = 'On Above:'
               ParentColor = False
             end
             object edtOnAbove: TEdit
               Left = 90
-              Height = 30
+              Height = 31
               Hint = 'Define minimum value for ON state'
               Top = 40
               Width = 46
@@ -218,26 +222,26 @@ object Form1: TForm1
             end
           end
           object btnProcess: TButton
-            Left = 592
+            Left = 760
             Height = 97
             Hint = 'Process the data'
             Top = 8
             Width = 84
             Caption = 'Process ->'
-            OnClick = btnProcessClick
             TabOrder = 5
+            OnClick = btnProcessClick
           end
           object Label8: TLabel
-            Left = 376
-            Height = 18
+            Left = 544
+            Height = 19
             Top = 8
-            Width = 25
+            Width = 26
             Caption = 'Clip:'
             ParentColor = False
           end
           object edtClip: TEdit
-            Left = 376
-            Height = 30
+            Left = 544
+            Height = 31
             Hint = 'Limit the maximum count'
             Top = 26
             Width = 48
@@ -245,17 +249,17 @@ object Form1: TForm1
             Text = '0'
           end
           object GroupBox2: TGroupBox
-            Left = 248
+            Left = 416
             Height = 97
             Top = 8
             Width = 121
             Caption = 'Bins'
-            ClientHeight = 78
+            ClientHeight = 77
             ClientWidth = 119
             TabOrder = 7
             object tbNumBins: TTrackBar
               Left = 8
-              Height = 42
+              Height = 43
               Hint = 'Number of bins'
               Top = 13
               Width = 100
@@ -264,6 +268,40 @@ object Form1: TForm1
               Position = 10
               TabOrder = 0
             end
+          end
+          object rgChannel: TRadioGroup
+            Left = 8
+            Height = 97
+            Top = 8
+            Width = 73
+            AutoFill = True
+            Caption = 'Channel'
+            ChildSizing.LeftRightSpacing = 6
+            ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+            ChildSizing.EnlargeVertical = crsHomogenousChildResize
+            ChildSizing.ShrinkHorizontal = crsScaleChilds
+            ChildSizing.ShrinkVertical = crsScaleChilds
+            ChildSizing.Layout = cclLeftToRightThenTopToBottom
+            ChildSizing.ControlsPerLine = 1
+            ClientHeight = 77
+            ClientWidth = 71
+            ItemIndex = 0
+            Items.Strings = (
+              'CH1'
+              'CH2'
+            )
+            OnClick = rgChannelClick
+            TabOrder = 8
+          end
+          object btnAnalyse: TButton
+            Left = 88
+            Height = 97
+            Hint = 'Analyse files'
+            Top = 8
+            Width = 80
+            Caption = 'Analyse ->'
+            TabOrder = 9
+            OnClick = btnAnalyseClick
           end
         end
         object Splitter3: TSplitter
@@ -278,12 +316,12 @@ object Form1: TForm1
       end
       object TabSheet2: TTabSheet
         Caption = 'Output'
-        ClientHeight = 441
+        ClientHeight = 440
         ClientWidth = 904
         object Panel5: TPanel
           Left = 0
           Height = 53
-          Top = 388
+          Top = 387
           Width = 904
           Align = alBottom
           ClientHeight = 53
@@ -305,23 +343,27 @@ object Form1: TForm1
             Top = 13
             Width = 96
             Caption = 'Write to .csv'
-            OnClick = btnWriteCsvClick
             TabOrder = 1
+            OnClick = btnWriteCsvClick
           end
         end
         object Chart2: TChart
           Left = 0
-          Height = 132
+          Height = 131
           Top = 256
           Width = 904
           AxisList = <          
             item
+              Marks.LabelBrush.Style = bsClear
               Minors = <>
               Title.LabelFont.Orientation = 900
+              Title.LabelBrush.Style = bsClear
             end          
             item
               Alignment = calBottom
+              Marks.LabelBrush.Style = bsClear
               Minors = <>
+              Title.LabelBrush.Style = bsClear
             end>
           Foot.Brush.Color = clBtnFace
           Foot.Font.Color = clBlue
@@ -381,40 +423,30 @@ object Form1: TForm1
       Height = 25
       Hint = 'Load Files'
       Top = 1
-      Width = 56
+      Width = 72
       Caption = 'Load'
-      OnClick = btnLoadClick
       TabOrder = 0
+      OnClick = btnLoadClick
     end
     object btnRemove: TButton
-      Left = 56
+      Left = 72
       Height = 25
       Hint = 'Remove a file from the list'
       Top = 1
-      Width = 56
+      Width = 72
       Caption = 'Remove'
-      OnClick = btnRemoveClick
       TabOrder = 1
+      OnClick = btnRemoveClick
     end
     object btnView: TButton
-      Left = 112
+      Left = 173
       Height = 25
       Hint = 'View and edit files'
       Top = 1
       Width = 56
       Caption = 'View'
-      OnClick = btnViewClick
       TabOrder = 2
-    end
-    object btnAnalyse: TButton
-      Left = 168
-      Height = 25
-      Hint = 'Analyse files'
-      Top = 1
-      Width = 56
-      Caption = 'Analyse'
-      OnClick = btnAnalyseClick
-      TabOrder = 3
+      OnClick = btnViewClick
     end
     object btnClear: TButton
       Left = 0
@@ -423,8 +455,8 @@ object Form1: TForm1
       Top = 544
       Width = 56
       Caption = 'Clear'
+      TabOrder = 3
       OnClick = btnClearClick
-      TabOrder = 4
     end
     object btnAbout: TButton
       Left = 176
@@ -433,8 +465,8 @@ object Form1: TForm1
       Top = 544
       Width = 53
       Caption = 'About'
+      TabOrder = 4
       OnClick = btnAboutClick
-      TabOrder = 5
     end
     object lbFiles: TListBox
       Left = -3
@@ -444,7 +476,7 @@ object Form1: TForm1
       Anchors = [akTop, akLeft, akRight, akBottom]
       ItemHeight = 0
       ScrollWidth = 230
-      TabOrder = 6
+      TabOrder = 5
       TopIndex = -1
     end
   end
@@ -452,7 +484,7 @@ object Form1: TForm1
     DefaultExt = '.csv'
     Filter = 'csv files (*.csv)|*.csv|all files (*.*)|*.*'
     Options = [ofAllowMultiSelect, ofEnableSizing, ofViewDetail]
-    left = 152
-    top = 104
+    Left = 152
+    Top = 104
   end
 end
