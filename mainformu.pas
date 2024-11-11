@@ -40,14 +40,16 @@ type
     edtClip: TEdit;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
+    lblCh2Max: TLabel;
     lblCH1Min: TLabel;
     lblCh1Max: TLabel;
     lblCH2Min: TLabel;
-    lblCH2Max: TLabel;
     Label5: TLabel;
     Label6: TLabel;
     Label8: TLabel;
     lbFiles: TListBox;
+    lblCH1Units: TLabel;
+    lblCH2Units: TLabel;
     lbLogging: TListBox;
     lbOutput: TListBox;
     OpenDialog1: TOpenDialog;
@@ -80,7 +82,7 @@ type
     binMax: array of single;
     meterReads: array of TMeterRead;
     function hasCommas(line : string) : boolean;
-    procedure extractData(const line : string; var col1,col2,col3 : string);
+    function extractData(const line : string; var col1,col2,col3 : string):integer;
     procedure LoadArrayFromFile(var maxVal1, minVal1, maxVal2, minVal2 : single);
     procedure logLine(logString : string);
     function calcState(const value, lowLimit, highLimit : single; var currentState:boolean):boolean;
@@ -110,7 +112,7 @@ var
   myFileName : string;
   lineTime,lineValA,lineValB : string;
   myFile : TStringList = nil;
-
+  paramcount : integer =0;
   goodLines, badLines, totLines : integer;
   logTime : TDateTime;
   CH1val, CH2val : single;
@@ -140,33 +142,44 @@ begin
       totLines := myFile.Count;
       logLine('File lines = ' + IntToStr(totLines));
       for j := 0 to totlines -1 do begin              // all the lines in the file
-        if hasCommas(myFile[j]) then begin
+        // show the mooshimeter data in the logs, board id etc
+        // get the measurement type fields
+        if hasCommas(myFile[j]) then begin   // check for data lines with commas
           inc(goodLines);
-          extractData(myFile[j],lineTime,lineValA,lineValB);
-          if trim(lineTime) <> trim('UTC TIME SEC') then begin          { DONE : need to do comparison with no spaces }
-            try
-              logTime := UnixToDateTime(trunc(StrToFloat(lineTime)));
-              ch1val := StrToFloat(lineValA);
-              ch2val := StrToFloat(lineValB);
-            except
-              showMessage('Error in file '+myFileName+' at line '+intToStr(j+1));
-              raise
+          paramcount:=extractData(myFile[j],lineTime,lineValA,lineValB);
+          if paramcount =3 then begin
+            if j=7 then begin // we should be on the data lines header
+              lblCH1Units.Caption :=LineValA;
+              lblCH2Units.Caption :=LineValB;
+              logLine(myFile[j]);
             end;
-            logLine(lineTime+' '+lineValA+' '+lineValB);
-            logLine(datetimetostr(logTime)+' '+floattostr(CH1val)+' '+floattostr(CH2val));
-            if CH1val > maxVal1 then
-              maxVal1 := CH1val;
-            if CH1Val < minVal1 then
-              minVal1 := CH1val;
-            if CH2val > maxVal2 then
-              maxVal2 := CH2val;
-            if CH2Val < minVal2 then
-              minVal2 := CH2val;
-            setlength(meterReads,length(meterReads)+1);  // make the array one bigger
-            meterReads[length(meterReads)-1] := TMeterRead.create;
-            meterReads[length(meterReads)-1].TS := logTime;
-            meterReads[length(meterReads)-1].CH1 := CH1val;
-            meterReads[length(meterReads)-1].CH2 := CH2val;
+            if trim(lineTime) <> trim('UTC TIME SEC') then begin          { DONE : need to do comparison with no spaces }
+              try
+                logTime := UnixToDateTime(trunc(StrToFloat(lineTime)));
+                ch1val := StrToFloat(lineValA);
+                ch2val := StrToFloat(lineValB);
+              except
+                showMessage('Error in file '+myFileName+' at line '+intToStr(j+1));
+                raise
+              end;
+              logLine(lineTime+' '+lineValA+' '+lineValB);
+              logLine(datetimetostr(logTime)+' '+floattostr(CH1val)+' '+floattostr(CH2val));
+              if CH1val > maxVal1 then
+                maxVal1 := CH1val;
+              if CH1Val < minVal1 then
+                minVal1 := CH1val;
+              if CH2val > maxVal2 then
+                maxVal2 := CH2val;
+              if CH2Val < minVal2 then
+                minVal2 := CH2val;
+              setlength(meterReads,length(meterReads)+1);  // make the array one bigger
+              meterReads[length(meterReads)-1] := TMeterRead.create;
+              meterReads[length(meterReads)-1].TS := logTime;
+              meterReads[length(meterReads)-1].CH1 := CH1val;
+              meterReads[length(meterReads)-1].CH2 := CH2val;
+            end;
+          end else begin
+            logLine('Incorrect param count for line '+IntToStr(j));
           end;
         end
         else begin
@@ -412,20 +425,24 @@ begin
     edtCH1min.Enabled:= true;
     lblCH1Min.Enabled:= true;
     lblCh1Max.Enabled:= true;
+    lblCH1Units.Enabled:= true;
     edtCH2Max.Enabled:= false;
     edtCH2min.Enabled:= false;
     lblCH2Min.Enabled:= false;
     lblCh2Max.Enabled:= false;
+    lblCH2Units.Enabled:= true;
   end
   else begin
     edtCH1Max.Enabled:= false;
     edtCH1min.Enabled:= false;
     lblCH1Min.Enabled:= false;
     lblCh1Max.Enabled:= false;
+    lblCH1Units.Enabled:= true;
     edtCH2Max.Enabled:= true;
     edtCH2min.Enabled:= true;
     lblCH2Min.Enabled:= true;
     lblCh2Max.Enabled:= true;
+    lblCH2Units.Enabled:= true;
   end;
 end;
 
@@ -447,18 +464,26 @@ begin
   if pos(',',line) > 0 then result := true;
 end;
 
-procedure TForm1.extractData(const line: string; var col1, col2, col3: string);
+function TForm1.extractData(const line: string; var col1, col2, col3: string): integer;
 var
   valList : TstringList;
 begin
+  result:=0;
   valList := TstringList.create;
   try
     valList.Delimiter := ',';
     valList.StrictDelimiter := true;
     valList.DelimitedText:=line;
-    col1 := valList[0];
-    col2 := valList[1];
-    col3 := valList[2];
+    result:=valList.count;
+    if valList.count=3 then begin
+      col1 := valList[0];
+      col2 := valList[1];
+      col3 := valList[2];
+    end else begin
+      col1 :='';
+      col2 :='';
+      col3 :='';
+    end;
   finally
     valList.free;
   end;
